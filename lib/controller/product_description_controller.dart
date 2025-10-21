@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 class ProductDescriptionController extends GetxController {
   // Reactive variables
-  var quantity = 0.obs;
+  var quantity = 1.obs;
   var selectedColorIndex = 0.obs;
 
   // Example color list

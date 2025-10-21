@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:furniture_shop/components/button.dart';
+import 'package:furniture_shop/components/cart_checkout_button.dart';
 import 'package:furniture_shop/components/cart_tile.dart';
 import 'package:furniture_shop/model/model.dart';
 import 'package:furniture_shop/theme/colors.dart';
@@ -13,7 +13,7 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Initialize the controller
-    final ProductController controller = Get.put(ProductController());
+    final ProductController controller = Get.find<ProductController>();
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
@@ -57,7 +57,7 @@ class CartPage extends StatelessWidget {
                 child: IconButton(
                   onPressed: () {
                     // Clear all products from the cart
-                    controller.cart.clear();
+                    controller.clearCart();
                   },
                   icon: Image.asset(
                     "assets/images/trash.png",
@@ -79,34 +79,45 @@ class CartPage extends StatelessWidget {
             Expanded(
               child: Obx(
                 () {
-                  return ListView.builder(
-                    itemCount: controller.cart.length,
-                    itemBuilder: (context, index) {
-                      // get product from cart
-                      final Product product = controller.cart[index];
+                  return controller.cart.isEmpty
+                      ? Center(
+                          child: Text(
+                            "Your cart is empty!",
+                            style: GoogleFonts.inter(
+                                color: primaryColor, fontSize: 16),
+                          ),
+                        )
+                      : ListView.builder(
+                          itemCount: controller.cart.length,
+                          itemBuilder: (context, index) {
+                            // get product from cart
+                            final Product product = controller.cart[index];
 
-                      //return to list tile
-                      return CartTile(
-                        product: product,
-                        onTap: () {
-                          //remove product from cart
-                          controller.removeFromCart(product);
-                        },
-                      );
-                    },
-                  );
+                            //return to list tile
+                            return CartTile(
+                              product: product,
+                              onTap: () {
+                                //remove product from cart
+                                controller.removeFromCart(product);
+                              },
+                            );
+                          },
+                        );
                 },
               ),
             ),
 
-            // Checkout button
+            // Checkout button and total price
             Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: MyButton(
-                text: "Proceed to Checkout",
-                onTap: () {},
-              ),
-            ),
+                padding: const EdgeInsets.all(25.0),
+                child: Obx(
+                  () => CartCheckoutButton(
+                    text: "Proceed to Checkout",
+                    totalprice:
+                        " | \$${controller.totalCartPrice.toStringAsFixed(0)}",
+                    onTap: () {},
+                  ),
+                )),
             const SizedBox(height: 25),
           ],
         ),

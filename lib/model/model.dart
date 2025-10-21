@@ -8,6 +8,7 @@ class Product {
   final double price;
   final double rating;
   final bool isNew;
+  int quantity;
 
   Product({
     required this.id,
@@ -19,6 +20,7 @@ class Product {
     required this.price,
     required this.rating,
     this.isNew = false,
+    this.quantity = 1,
   });
 }
 

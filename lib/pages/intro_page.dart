@@ -16,38 +16,42 @@ class IntroPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           // icon
-          Image.asset('assets/images/chair1.jpg'),
+          Expanded(
+            child: Image.asset('assets/images/chair1.jpg'),
+          ),
 
           Padding(
             padding: const EdgeInsets.all(25.0),
-            child: Column(
-              children: [
-                // title
-                Text(
-                  'Enjoy Your Online Shopping',
-                  style: GoogleFonts.inter(
-                    fontSize: 36,
-                    color: primaryColor,
-                    fontWeight: FontWeight.bold,
+            child: Expanded(
+              child: Column(
+                children: [
+                  // title
+                  Text(
+                    'Enjoy Your Online Shopping',
+                    style: GoogleFonts.inter(
+                      fontSize: 36,
+                      color: primaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
 
-                // subtitile
-                Text(
-                  'Browse through all categories and shop the best furniture for your dream house',
-                  style: TextStyle(color: secondaryColor, fontSize: 18),
-                ),
+                  // subtitile
+                  Text(
+                    'Browse through all categories and shop the best furniture for your dream house',
+                    style: TextStyle(color: secondaryColor, fontSize: 18),
+                  ),
 
-                const SizedBox(height: 25),
-                //get started button
-                MyButton(
-                  text: 'Get Started',
-                  onTap: () {
-                    // go to the menu page
-                    Navigator.pushNamed(context, '/homepage');
-                  },
-                ),
-              ],
+                  const SizedBox(height: 25),
+                  //get started button
+                  MyButton(
+                    text: 'Get Started',
+                    onTap: () {
+                      // go to the menu page
+                      Navigator.pushNamed(context, '/homepage');
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ],

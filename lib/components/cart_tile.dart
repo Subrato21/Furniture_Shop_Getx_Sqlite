@@ -10,17 +10,11 @@ class CartTile extends StatelessWidget {
   final VoidCallback? onTap;
   const CartTile({super.key, required this.product, this.onTap});
 
-  // remove from cart
-  void removeFromCart(Product product) {
-    //Get the global ProductController instance so that we can accewss removeToCart function
-    final productController = Get.find<ProductController>();
-
-    //remove product from cart
-    productController.removeFromCart(product);
-  }
-
   @override
   Widget build(BuildContext context) {
+    //Get the global ProductController instance for cart updates
+    final productController = Get.find<ProductController>();
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -77,9 +71,45 @@ class CartTile extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: primaryColor),
                       ),
+                      // Quantity controls
+                      Row(
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.remove),
+                            onPressed: () async {
+                              if (product.quantity > 1) {
+                                product.quantity--;
+                                await productController.updateCartQuantity(
+                                  product.id,
+                                  product.quantity,
+                                );
+                                productController.refreshCart(); // refresh UI
+                              }
+                            },
+                          ),
+                          Text(
+                            product.quantity.toString(),
+                            style: GoogleFonts.inter(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.add),
+                            onPressed: () async {
+                              product.quantity++;
+                              await productController.updateCartQuantity(
+                                product.id,
+                                product.quantity,
+                              );
+                              productController.refreshCart(); // refresh UI
+                            },
+                          ),
+                        ],
+                      ),
                       IconButton(
                         onPressed: () {
-                          removeFromCart(product);
+                          productController.removeFromCart(product);
                         },
                         icon: Image.asset(
                           "assets/images/trash.png",
