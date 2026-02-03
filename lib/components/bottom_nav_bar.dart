@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:furniture_shop/pages/profile/profile_screen.dart';
 import 'package:get/get.dart';
 import 'package:furniture_shop/pages/cart_page.dart';
 import 'package:furniture_shop/pages/favorite_page.dart';
 import 'package:furniture_shop/pages/product_home_page.dart';
-import 'package:furniture_shop/pages/profile_page.dart';
 import 'package:furniture_shop/pages/scan_page.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -22,7 +22,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     ProductHomePage(),
     FavoritePage(),
     ScanPage(),
-    ProfilePage(),
+    ProfileScreen(),
   ];
 
   // this function updates the selected index or navigates to cart
@@ -55,24 +55,43 @@ class _BottomNavBarState extends State<BottomNavBar> {
         onTap: _navigateBottomBar, // call function to update selected index
         items: [
           BottomNavigationBarItem(
-            icon: Image.asset("assets/images/home.png", width: 24, height: 24),
+            icon: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child:
+                  Image.asset("assets/images/home.png", width: 24, height: 24),
+            ),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Image.asset("assets/images/favourite.png",
-                width: 24, height: 24),
+            icon: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset("assets/images/favourite.png",
+                  width: 24, height: 24),
+            ),
             label: "Favourite",
           ),
           BottomNavigationBarItem(
-            icon: Image.asset("assets/images/scan.png", width: 24, height: 24),
+            icon: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child:
+                  Image.asset("assets/images/scan.png", width: 24, height: 24),
+            ),
             label: "Scan",
           ),
           BottomNavigationBarItem(
-            icon: Image.asset("assets/images/cart.png", width: 24, height: 24),
+            icon: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child:
+                  Image.asset("assets/images/cart.png", width: 24, height: 24),
+            ),
             label: "Cart",
           ),
           BottomNavigationBarItem(
-            icon: Image.asset("assets/images/user.png", width: 24, height: 24),
+            icon: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child:
+                  Image.asset("assets/images/user.png", width: 24, height: 24),
+            ),
             label: "Profile",
           ),
         ],

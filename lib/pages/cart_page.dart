@@ -20,7 +20,10 @@ class CartPage extends StatelessWidget {
         title: Text(
           "Cart",
           style: GoogleFonts.inter(
-              fontSize: 22, fontWeight: FontWeight.bold, color: primaryColor),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: primaryColor,
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
@@ -84,7 +87,7 @@ class CartPage extends StatelessWidget {
                           child: Text(
                             "Your cart is empty!",
                             style: GoogleFonts.inter(
-                                color: primaryColor, fontSize: 16),
+                                color: thirdColor, fontSize: 16),
                           ),
                         )
                       : ListView.builder(

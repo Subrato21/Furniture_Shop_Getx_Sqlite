@@ -28,11 +28,16 @@ class BestSellerTile extends StatelessWidget {
                 Row(
                   children: [
                     // Product Image
-                    Image.asset(
-                      product.imageUrl,
-                      height: 80,
-                      width: 80,
-                    ),
+                    Row(
+                      children: List.generate(
+                        product.imageUrl.length,
+                        (index) => Image.asset(
+                          product.imageUrl[index],
+                          width: 80,
+                          height: 80,
+                        ),
+                      ),
+                    )
                   ],
                 ),
                 const SizedBox(width: 8),
@@ -48,7 +53,7 @@ class BestSellerTile extends StatelessWidget {
                           Text(
                             product.name,
                             style: GoogleFonts.inter(
-                                fontSize: 18,
+                                fontSize: 15,
                                 fontWeight: FontWeight.bold,
                                 color: primaryColor),
                             maxLines: 1,
@@ -60,7 +65,7 @@ class BestSellerTile extends StatelessWidget {
                           Text(
                             product.type,
                             style: GoogleFonts.inter(
-                                fontSize: 18, color: thirdColor),
+                                fontSize: 14, color: thirdColor),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -68,7 +73,7 @@ class BestSellerTile extends StatelessWidget {
                           Text(
                             '\$${product.price.toStringAsFixed(0)}',
                             style: GoogleFonts.inter(
-                                fontSize: 18,
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold,
                                 color: primaryColor),
                             maxLines: 1,

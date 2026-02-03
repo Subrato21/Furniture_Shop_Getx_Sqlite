@@ -28,9 +28,15 @@ class CartTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Left: Product Image
-            Image.asset(
-              product.imageUrl,
-              width: 80,
+            Row(
+              children: List.generate(
+                product.imageUrl.length,
+                (index) => Image.asset(
+                  product.imageUrl[index],
+                  width: 80,
+                  height: 80,
+                ),
+              ),
             ),
             const SizedBox(width: 24), // space between image and info
 
@@ -58,7 +64,7 @@ class CartTile extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 4),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

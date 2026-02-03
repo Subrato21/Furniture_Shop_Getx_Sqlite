@@ -25,7 +25,10 @@ class CartDBHelper {
 
   Future<Database> _initDB() async {
     Directory documentsDir = await getApplicationDocumentsDirectory();
-    String path = join(documentsDir.path, 'cartnewDB.db');
+    String path = join(documentsDir.path, 'cartnewDB2.db');
+
+    // 🔥 DEV ONLY (uncomment if you want fresh DB every run)
+    // await deleteDatabase(path);
 
     return await openDatabase(
       path,
@@ -46,7 +49,8 @@ class CartDBHelper {
         // Add quantity column if upgrading from old version
         if (oldVersion < 2) {
           await db.execute(
-              'ALTER TABLE $TABLE_CART ADD COLUMN $COLUMN_QUANTITY INTEGER DEFAULT 1');
+            'ALTER TABLE $TABLE_CART ADD COLUMN $COLUMN_QUANTITY INTEGER DEFAULT 1',
+          );
         }
       },
     );
@@ -82,7 +86,8 @@ class CartDBHelper {
           COLUMN_ID: product.id,
           COLUMN_NAME: product.name,
           COLUMN_TYPE: product.type,
-          COLUMN_IMAGE_URL: product.imageUrl,
+          COLUMN_IMAGE_URL:
+              product.imageUrl.join(','), // ✅ List<String> → String
           COLUMN_PRICE: product.price,
           COLUMN_QUANTITY: product.quantity, // ✅ new
         },
@@ -112,7 +117,8 @@ class CartDBHelper {
         id: maps[i][COLUMN_ID],
         name: maps[i][COLUMN_NAME],
         type: maps[i][COLUMN_TYPE],
-        imageUrl: maps[i][COLUMN_IMAGE_URL],
+        imageUrl: (maps[i][COLUMN_IMAGE_URL] as String)
+            .split(','), // ✅ String → List<String>
         price: maps[i][COLUMN_PRICE],
         quantity: maps[i][COLUMN_QUANTITY] ?? 1, // ✅ read quantity
         category: '',

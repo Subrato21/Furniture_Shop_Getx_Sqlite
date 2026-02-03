@@ -22,8 +22,10 @@ class ProductDescriptionPage extends StatelessWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: true, // Allows content behind AppBar
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[100],
+
       appBar: AppBar(
+        surfaceTintColor: Colors.transparent,
         backgroundColor: Colors.transparent, // Make AppBar transparent
         leadingWidth: 80,
         leading: Padding(
@@ -77,190 +79,228 @@ class ProductDescriptionPage extends StatelessWidget {
             Stack(
               children: [
                 // Product image
-                Image.asset(
-                  product.imageUrl,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+                AspectRatio(
+                  aspectRatio: 1,
+                  child: Image.asset(
+                    product.imageUrl.first,
+                    width: double.infinity,
+                    height: 360,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ],
             ),
 
             const SizedBox(height: 15),
 
-            // Product name, type, rating
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Left side — product info
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        product.name,
-                        style: GoogleFonts.inter(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: primaryColor,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        product.type,
-                        style: GoogleFonts.inter(
-                          color: thirdColor,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ],
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 24),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withValues(alpha: 0.3), // shadow color
+                    spreadRadius: 10, // how much the shadow spreads
+                    blurRadius: 40, // blur effect
+                    offset: Offset(0, 5), // horizontal & vertical offset
                   ),
-                  // Right side — rating
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: Colors.amber.shade100,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+                ],
+              ),
+              child: Column(
+                children: [
+                  // Product name, type, rating
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Icon(Icons.star, color: Colors.amber, size: 16),
-                        const SizedBox(width: 4),
-                        Text(
-                          product.rating.toString(),
-                          style: GoogleFonts.inter(
-                              fontWeight: FontWeight.bold, color: Colors.black),
+                        // Left side — product info
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: 240,
+                              child: Text(
+                                product.name,
+                                style: GoogleFonts.inter(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: primaryColor,
+                                ),
+                                softWrap:
+                                    true, // allows text to wrap to next line
+                                maxLines: 2, // limit to 2 lines
+                                overflow: TextOverflow
+                                    .ellipsis, // shows "..." if text is longer than 2 lines
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              product.type,
+                              style: GoogleFonts.inter(
+                                color: thirdColor,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                        // Right side — rating
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: Colors.amber.shade100,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Row(
+                            children: [
+                              const Icon(Icons.star,
+                                  color: Colors.amber, size: 16),
+                              const SizedBox(width: 4),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 4.0, vertical: 2),
+                                child: Text(
+                                  product.rating.toString(),
+                                  style: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
-                ],
-              ),
-            ),
 
-            const SizedBox(height: 15),
+                  const SizedBox(height: 15),
 
-            // Product description with Read More
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Obx(() {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      product.description,
-                      style: GoogleFonts.inter(
-                        color: thirdColor,
-                        fontSize: 16,
-                      ),
-                      maxLines: isExpanded.value
-                          ? null
-                          : 2, // isExpanded False initially so it will make it 2 line  if True do nothing.
-                      overflow: isExpanded.value
-                          ? TextOverflow.visible
-                          : TextOverflow
-                              .ellipsis, // add ... dot after making 2 lines
-                    ),
-                    const SizedBox(height: 5),
-                    GestureDetector(
-                      onTap: () => isExpanded.value = !isExpanded
-                          .value, // initially isExpanded is false but after tapping it makes it to True,
-                      child: Text(
-                        isExpanded.value ? "Read Less" : "Read More",
-                        style: GoogleFonts.inter(
-                            color: primaryColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                    ),
-                  ],
-                );
-              }),
-            ),
+                  // Product description with Read More
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Obx(() {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            product.description,
+                            style: GoogleFonts.inter(
+                              color: thirdColor,
+                              fontSize: 16,
+                            ),
+                            maxLines: isExpanded.value
+                                ? null
+                                : 2, // isExpanded False initially so it will make it 2 line  if True do nothing.
+                            overflow: isExpanded.value
+                                ? TextOverflow.visible
+                                : TextOverflow
+                                    .ellipsis, // add ... dot after making 2 lines
+                          ),
+                          const SizedBox(height: 5),
+                          GestureDetector(
+                            onTap: () => isExpanded.value = !isExpanded
+                                .value, // initially isExpanded is false but after tapping it makes it to True,
+                            child: Text(
+                              isExpanded.value ? "Read Less" : "Read More",
+                              style: GoogleFonts.inter(
+                                  color: primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                          ),
+                        ],
+                      );
+                    }),
+                  ),
 
-            const SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
-            // Color selector + Quantity
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Colors
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Color",
-                        style: GoogleFonts.inter(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      ),
-                      const SizedBox(height: 8),
-                      Obx(() => Row(
-                            children: List.generate(
-                              controller.colorOptions.length,
-                              (index) => GestureDetector(
-                                onTap: () => controller.changeColor(index),
-                                child: Container(
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 4.0),
-                                  height: 24,
-                                  width: 24,
-                                  decoration: BoxDecoration(
-                                    color: controller.colorOptions[index],
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      color:
-                                          controller.selectedColorIndex.value ==
-                                                  index
-                                              ? Colors.black
-                                              : Colors.transparent,
-                                      width: 2,
+                  // Color selector + Quantity
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // Colors
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Color",
+                              style: GoogleFonts.inter(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                            const SizedBox(height: 8),
+                            Obx(() => Row(
+                                  children: List.generate(
+                                    controller.colorOptions.length,
+                                    (index) => GestureDetector(
+                                      onTap: () =>
+                                          controller.changeColor(index),
+                                      child: Container(
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 4.0),
+                                        height: 24,
+                                        width: 24,
+                                        decoration: BoxDecoration(
+                                          color: controller.colorOptions[index],
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color: controller.selectedColorIndex
+                                                        .value ==
+                                                    index
+                                                ? Colors.black
+                                                : Colors.transparent,
+                                            width: 2,
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ),
+                                )),
+                          ],
+                        ),
+
+                        // Quantity controls
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: const Icon(Icons.remove),
+                              onPressed: controller.decrement,
                             ),
-                          )),
-                    ],
+                            Obx(() => Text(
+                                  controller.quantity.value.toString(),
+                                  style: GoogleFonts.inter(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                )),
+                            IconButton(
+                              icon: const Icon(Icons.add),
+                              onPressed: controller.increment,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
 
-                  // Quantity controls
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.remove),
-                        onPressed: controller.decrement,
-                      ),
-                      Obx(() => Text(
-                            controller.quantity.value.toString(),
-                            style: GoogleFonts.inter(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          )),
-                      IconButton(
-                        icon: const Icon(Icons.add),
-                        onPressed: controller.increment,
-                      ),
-                    ],
+                  const SizedBox(height: 150),
+
+                  // Add to cart button
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: DescriptionButton(
+                      text: 'Add to Cart ',
+                      price: ' | ' '\$${product.price.toInt()}',
+                      onTap: () {
+                        controller.addToCart(product);
+                      },
+                    ),
                   ),
                 ],
-              ),
-            ),
-
-            const SizedBox(height: 150),
-
-            // Add to cart button
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: DescriptionButton(
-                text: 'Add to Cart ',
-                price: ' | ' '\$${product.price.toInt()}',
-                onTap: () {
-                  controller.addToCart(product);
-                },
               ),
             ),
             const SizedBox(height: 25),

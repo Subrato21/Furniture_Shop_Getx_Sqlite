@@ -21,18 +21,23 @@ class ProductTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         margin: const EdgeInsets.only(left: 25),
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Column(
               children: [
                 // Product Image
-                Image.asset(
-                  product.imageUrl,
-                  height: 140,
+                Row(
+                  children: List.generate(
+                    product.imageUrl.length,
+                    (index) => Image.asset(
+                      product.imageUrl[index],
+                      height: 140,
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 8),
+
                 SizedBox(
                   width:
                       160, // here added sized box and given fixed width so that we can use spacebetween without it it will not work
@@ -97,30 +102,33 @@ class ProductTile extends StatelessWidget {
               ],
             ),
 
-            const SizedBox(height: 10),
+            // const SizedBox(height: 10),
 
             // Product Name
-            Text(
-              product.name,
-              style: GoogleFonts.inter(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: primaryColor),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            SizedBox(
+              width: 140,
+              child: Text(
+                product.name,
+                style: GoogleFonts.inter(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: primaryColor),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
-            const SizedBox(height: 8),
+            // const SizedBox(height: 8),
 
             //product type
 
             Text(
               product.type,
-              style: GoogleFonts.inter(fontSize: 18, color: thirdColor),
+              style: GoogleFonts.inter(fontSize: 16, color: thirdColor),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
 
-            const SizedBox(height: 8),
+            // const SizedBox(height: 8),
 
             // price and add icon
             // here added sized box and given fixed width so that we can use spacebetween without it it will not work

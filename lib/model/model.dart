@@ -3,7 +3,7 @@ class Product {
   final String name;
   final String category;
   final String type;
-  final String imageUrl;
+  final List<String> imageUrl;
   final String description;
   final double price;
   final double rating;
