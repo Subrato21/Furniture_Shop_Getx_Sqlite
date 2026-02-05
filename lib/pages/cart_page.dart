@@ -64,8 +64,7 @@ class CartPage extends StatelessWidget {
                   },
                   icon: Image.asset(
                     "assets/images/trash.png",
-                    height: 24,
-                    width: 24,
+                    height: 20,
                     color: Colors.black,
                   ),
                 ),

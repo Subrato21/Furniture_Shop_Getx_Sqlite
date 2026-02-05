@@ -28,16 +28,11 @@ class BestSellerTile extends StatelessWidget {
                 Row(
                   children: [
                     // Product Image
-                    Row(
-                      children: List.generate(
-                        product.imageUrl.length,
-                        (index) => Image.asset(
-                          product.imageUrl[index],
-                          width: 80,
-                          height: 80,
-                        ),
-                      ),
-                    )
+                    Image.asset(
+                      product.imageUrl.first,
+                      width: 80,
+                      height: 80,
+                    ),
                   ],
                 ),
                 const SizedBox(width: 8),

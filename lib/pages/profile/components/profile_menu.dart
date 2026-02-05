@@ -7,9 +7,11 @@ class ProfileMenu extends StatelessWidget {
     required this.text,
     required this.icon,
     required this.onTap,
+    this.color = primaryColor,
   });
 
   final String text, icon;
+  final Color? color;
   final GestureTapCallback onTap;
 
   @override
@@ -21,7 +23,7 @@ class ProfileMenu extends StatelessWidget {
             padding: EdgeInsets.all(20),
             backgroundColor: const Color(0xFFF5F6F9),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadiusGeometry.circular(15),
+              borderRadius: BorderRadius.circular(15),
             )),
         onPressed: onTap,
         child: Row(
@@ -29,7 +31,7 @@ class ProfileMenu extends StatelessWidget {
             Image.asset(
               icon,
               width: 22,
-              color: primaryColor,
+              color: color,
             ),
             const SizedBox(width: 20),
             Expanded(

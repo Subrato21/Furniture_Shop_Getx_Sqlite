@@ -28,14 +28,9 @@ class ProductTile extends StatelessWidget {
             Column(
               children: [
                 // Product Image
-                Row(
-                  children: List.generate(
-                    product.imageUrl.length,
-                    (index) => Image.asset(
-                      product.imageUrl[index],
-                      height: 140,
-                    ),
-                  ),
+                Image.asset(
+                  product.imageUrl.first,
+                  height: 140,
                 ),
 
                 SizedBox(

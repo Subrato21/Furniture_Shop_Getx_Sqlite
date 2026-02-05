@@ -53,13 +53,9 @@ class ProductHomePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        InkWell(
-                          onTap: () => Get.to(() => ProfileScreen()),
-                          child: CircleAvatar(
-                            radius: 28, // size of circle
-                            backgroundImage:
-                                AssetImage("assets/images/boy.png"),
-                          ),
+                        CircleAvatar(
+                          radius: 24, // size of circle
+                          backgroundImage: AssetImage("assets/images/boy.png"),
                         ),
                       ],
                     ),

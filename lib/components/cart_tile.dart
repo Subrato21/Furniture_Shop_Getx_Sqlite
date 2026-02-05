@@ -113,15 +113,17 @@ class CartTile extends StatelessWidget {
                           ),
                         ],
                       ),
-                      IconButton(
-                        onPressed: () {
-                          productController.removeFromCart(product);
-                        },
-                        icon: Image.asset(
-                          "assets/images/trash.png",
-                          height: 24,
-                          width: 24,
-                          color: Colors.black,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: IconButton(
+                          onPressed: () {
+                            productController.removeFromCart(product);
+                          },
+                          icon: Image.asset(
+                            "assets/images/trash.png",
+                            height: 20,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ],

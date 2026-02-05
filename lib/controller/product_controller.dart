@@ -19,7 +19,11 @@ class ProductController extends GetxController {
       name: "Rocking Chair",
       category: "Chairs",
       type: "Armchair",
-      imageUrl: ["assets/images/rockingchair 2.png"],
+      imageUrl: [
+        "assets/images/rockingchair 2.png",
+        "assets/images/rocking chair blue.png",
+        "assets/images/rocking chair red.png",
+      ],
       description:
           "Designed for relaxed moments, this rocking chair adds subtle elegance to any room. Made from high-quality materials for balanced motion and long-term comfort.",
       price: 258,

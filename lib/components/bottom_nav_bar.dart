@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:furniture_shop/pages/cart_page.dart';
 import 'package:furniture_shop/pages/favorite_page.dart';
 import 'package:furniture_shop/pages/product_home_page.dart';
-import 'package:furniture_shop/pages/scan_page.dart';
+//import 'package:furniture_shop/pages/scan_page.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -21,20 +21,20 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final List<Widget> _pages = [
     ProductHomePage(),
     FavoritePage(),
-    ScanPage(),
+    // ScanPage(),
     ProfileScreen(),
   ];
 
   // this function updates the selected index or navigates to cart
   void _navigateBottomBar(int index) {
-    if (index == 3) {
+    if (index == 2) {
       // Cart icon tapped -> navigate separately without bottom nav
       Get.to(() => const CartPage());
     } else {
       // Adjust selected index for other pages
       setState(() {
         // if index > 3 (cart removed), subtract 1 to match _pages list
-        _selectedIndex = index > 3 ? index - 1 : index;
+        _selectedIndex = index > 2 ? index - 1 : index;
       });
     }
   }
@@ -47,9 +47,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
       // bottom navigation bar
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        currentIndex: _selectedIndex >= 3
-            ? 4 //added 4 so that when we clicked profile page it highlights it
+        //backgroundColor: Colors.transparent,
+
+        currentIndex: _selectedIndex >= 2
+            ? 3 //added 4 so that when we clicked profile page it highlights it
             : _selectedIndex, // adjust for cart so that it avoid crash
         type: BottomNavigationBarType.fixed,
         onTap: _navigateBottomBar, // call function to update selected index
@@ -70,14 +71,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
             label: "Favourite",
           ),
-          BottomNavigationBarItem(
-            icon: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child:
-                  Image.asset("assets/images/scan.png", width: 24, height: 24),
-            ),
-            label: "Scan",
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Padding(
+          //     padding: const EdgeInsets.all(8.0),
+          //     child:
+          //         Image.asset("assets/images/scan.png", width: 24, height: 24),
+          //   ),
+          //   label: "Scan",
+          // ),
           BottomNavigationBarItem(
             icon: Padding(
               padding: const EdgeInsets.all(8.0),

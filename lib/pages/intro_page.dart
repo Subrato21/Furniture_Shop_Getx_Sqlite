@@ -16,14 +16,21 @@ class IntroPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           // icon
-          Expanded(
-            child: Image.asset('assets/images/chair1.jpg'),
+          AspectRatio(
+            aspectRatio: 0.75,
+            child: Image.asset(
+              'assets/images/chair1.jpg',
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
           ),
 
-          Padding(
-            padding: const EdgeInsets.all(25.0),
-            child: Expanded(
+          // Wrap Expanded outside Padding to fix ParentDataWidget error
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(25.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // title
                   Text(
@@ -41,7 +48,7 @@ class IntroPage extends StatelessWidget {
                     style: TextStyle(color: secondaryColor, fontSize: 18),
                   ),
 
-                  const SizedBox(height: 25),
+                  //const SizedBox(height: 25),
                   //get started button
                   MyButton(
                     text: 'Get Started',

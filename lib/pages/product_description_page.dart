@@ -94,7 +94,7 @@ class ProductDescriptionPage extends StatelessWidget {
             const SizedBox(height: 15),
 
             Container(
-              padding: EdgeInsets.symmetric(vertical: 24),
+              padding: EdgeInsets.symmetric(vertical: 50),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
@@ -214,8 +214,34 @@ class ProductDescriptionPage extends StatelessWidget {
                       );
                     }),
                   ),
-
-                  const SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Row(
+                      children: [
+                        ...List.generate(
+                            product.imageUrl.length,
+                            (index) => Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 24, left: 4, bottom: 24),
+                                  child: InkWell(
+                                    child: Container(
+                                      height: 53,
+                                      width: 50,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: secondaryColor,
+                                        ),
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: Image.asset(
+                                        product.imageUrl[index],
+                                      ),
+                                    ),
+                                  ),
+                                )),
+                      ],
+                    ),
+                  ),
 
                   // Color selector + Quantity
                   Padding(
@@ -287,7 +313,7 @@ class ProductDescriptionPage extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(height: 150),
+                  const SizedBox(height: 30),
 
                   // Add to cart button
                   Padding(
