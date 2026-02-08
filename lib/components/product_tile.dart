@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:furniture_shop/controller/product_controller.dart';
 import 'package:furniture_shop/theme/colors.dart';
 import 'package:get/get.dart';
@@ -18,10 +19,10 @@ class ProductTile extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.grey[100],
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.r),
         ),
-        margin: const EdgeInsets.only(left: 25),
-        padding: const EdgeInsets.all(20),
+        margin: EdgeInsets.only(left: 25.w),
+        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -30,12 +31,12 @@ class ProductTile extends StatelessWidget {
                 // Product Image
                 Image.asset(
                   product.imageUrl.first,
-                  height: 140,
+                  height: 140.h,
                 ),
 
                 SizedBox(
-                  width:
-                      160, // here added sized box and given fixed width so that we can use spacebetween without it it will not work
+                  width: 160
+                      .w, // here added sized box and given fixed width so that we can use spacebetween without it it will not work
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -44,17 +45,19 @@ class ProductTile extends StatelessWidget {
                           // Optional: "New" badge
                           product.isNew
                               ? Container(
-                                  margin: const EdgeInsets.only(top: 8),
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 8, vertical: 4),
+                                  margin: EdgeInsets.only(top: 8.h),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 8.w, vertical: 4.h),
                                   decoration: BoxDecoration(
                                     color: Colors.redAccent,
-                                    borderRadius: BorderRadius.circular(12),
+                                    borderRadius: BorderRadius.circular(12.r),
                                   ),
                                   child: Text(
                                     'NEW',
                                     style: GoogleFonts.inter(
-                                        fontSize: 14, color: Colors.white),
+                                      fontSize: 14.sp,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 )
                               : const SizedBox.shrink(),
@@ -65,12 +68,12 @@ class ProductTile extends StatelessWidget {
                       Row(
                         children: [
                           Container(
-                            margin: const EdgeInsets.only(top: 8),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 4),
+                            margin: EdgeInsets.only(top: 8.h),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 8.w, vertical: 4.h),
                             decoration: BoxDecoration(
                               color: Colors.yellowAccent.shade100,
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(12.r),
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.min, // Wrap content
@@ -78,13 +81,15 @@ class ProductTile extends StatelessWidget {
                                 Icon(
                                   Icons.star,
                                   color: Colors.brown.shade500,
-                                  size: 16,
+                                  size: 16.r,
                                 ),
                                 const SizedBox(width: 4),
                                 Text(
                                   product.rating.toString(),
-                                  style: const TextStyle(
-                                      color: Colors.grey, fontSize: 14),
+                                  style: GoogleFonts.inter(
+                                    color: Colors.grey,
+                                    fontSize: 14.sp,
+                                  ),
                                 ),
                               ],
                             ),

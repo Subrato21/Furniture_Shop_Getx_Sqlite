@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:furniture_shop/theme/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:furniture_shop/components/button.dart';
@@ -28,7 +29,7 @@ class IntroPage extends StatelessWidget {
           // Wrap Expanded outside Padding to fix ParentDataWidget error
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(25.0),
+              padding: EdgeInsets.all(25.0.r),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -36,7 +37,7 @@ class IntroPage extends StatelessWidget {
                   Text(
                     'Enjoy Your Online Shopping',
                     style: GoogleFonts.inter(
-                      fontSize: 36,
+                      fontSize: 36.sp,
                       color: primaryColor,
                       fontWeight: FontWeight.bold,
                     ),
@@ -45,7 +46,7 @@ class IntroPage extends StatelessWidget {
                   // subtitile
                   Text(
                     'Browse through all categories and shop the best furniture for your dream house',
-                    style: TextStyle(color: secondaryColor, fontSize: 18),
+                    style: TextStyle(color: secondaryColor, fontSize: 18.sp),
                   ),
 
                   //const SizedBox(height: 25),

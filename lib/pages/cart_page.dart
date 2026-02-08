@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:furniture_shop/components/cart_checkout_button.dart';
 import 'package:furniture_shop/components/cart_tile.dart';
 import 'package:furniture_shop/model/model.dart';
@@ -20,16 +21,16 @@ class CartPage extends StatelessWidget {
         title: Text(
           "Cart",
           style: GoogleFonts.inter(
-            fontSize: 20,
+            fontSize: 20.sp,
             fontWeight: FontWeight.bold,
             color: primaryColor,
           ),
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
-        leadingWidth: 80,
+        leadingWidth: 80.r,
         leading: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -39,8 +40,8 @@ class CartPage extends StatelessWidget {
               icon: Image.asset(
                 "assets/images/back.png",
                 color: Colors.black,
-                width: 24,
-                height: 24,
+                width: 24.w,
+                height: 24.h,
               ),
               onPressed: () => Get.back(),
             ),
@@ -48,10 +49,10 @@ class CartPage extends StatelessWidget {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: EdgeInsets.symmetric(horizontal: 15.w),
             child: SizedBox(
-              height: 50,
-              width: 50,
+              height: 50.h,
+              width: 50.w,
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -64,7 +65,7 @@ class CartPage extends StatelessWidget {
                   },
                   icon: Image.asset(
                     "assets/images/trash.png",
-                    height: 20,
+                    height: 20.h,
                     color: Colors.black,
                   ),
                 ),
@@ -74,7 +75,7 @@ class CartPage extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 12),
+        padding: EdgeInsets.only(top: 12.h),
         child: Column(
           children: [
             // customers cart
@@ -86,7 +87,7 @@ class CartPage extends StatelessWidget {
                           child: Text(
                             "Your cart is empty!",
                             style: GoogleFonts.inter(
-                                color: thirdColor, fontSize: 16),
+                                color: thirdColor, fontSize: 16.sp),
                           ),
                         )
                       : ListView.builder(
@@ -111,7 +112,7 @@ class CartPage extends StatelessWidget {
 
             // Checkout button and total price
             Padding(
-                padding: const EdgeInsets.all(25.0),
+                padding: EdgeInsets.all(25.0.r),
                 child: Obx(
                   () => CartCheckoutButton(
                     text: "Proceed to Checkout",
@@ -120,7 +121,7 @@ class CartPage extends StatelessWidget {
                     onTap: () {},
                   ),
                 )),
-            const SizedBox(height: 25),
+            SizedBox(height: 25.h),
           ],
         ),
       ),

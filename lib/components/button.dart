@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:furniture_shop/theme/colors.dart';
 
 class MyButton extends StatelessWidget {
@@ -14,9 +15,9 @@ class MyButton extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             color: primaryColor,
-            borderRadius: BorderRadius.circular(40),
+            borderRadius: BorderRadius.circular(40.r),
           ),
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(20.r),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

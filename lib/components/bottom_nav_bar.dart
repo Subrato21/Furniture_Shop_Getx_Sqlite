@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:furniture_shop/pages/profile/profile_screen.dart';
 import 'package:get/get.dart';
 import 'package:furniture_shop/pages/cart_page.dart';
@@ -57,17 +58,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
         items: [
           BottomNavigationBarItem(
             icon: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child:
-                  Image.asset("assets/images/home.png", width: 24, height: 24),
+              padding: EdgeInsets.all(8.0.r),
+              child: Image.asset("assets/images/home.png",
+                  width: 24.w, height: 24.h),
             ),
             label: "Home",
           ),
           BottomNavigationBarItem(
             icon: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0.r),
               child: Image.asset("assets/images/favourite.png",
-                  width: 24, height: 24),
+                  width: 28.w, height: 28.h),
             ),
             label: "Favourite",
           ),
@@ -81,17 +82,23 @@ class _BottomNavBarState extends State<BottomNavBar> {
           // ),
           BottomNavigationBarItem(
             icon: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child:
-                  Image.asset("assets/images/cart.png", width: 24, height: 24),
+              padding: EdgeInsets.all(8.0.r),
+              child: Image.asset(
+                "assets/images/cart.png",
+                width: 24.w,
+                height: 24.h,
+              ),
             ),
             label: "Cart",
           ),
           BottomNavigationBarItem(
             icon: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child:
-                  Image.asset("assets/images/user.png", width: 24, height: 24),
+              padding: EdgeInsets.all(8.0.r),
+              child: Image.asset(
+                "assets/images/user.png",
+                width: 24.w,
+                height: 24.h,
+              ),
             ),
             label: "Profile",
           ),

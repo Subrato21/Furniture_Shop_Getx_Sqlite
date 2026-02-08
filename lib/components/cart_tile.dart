@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:furniture_shop/controller/product_controller.dart';
 import 'package:get/get.dart';
 import 'package:furniture_shop/theme/colors.dart';
@@ -20,25 +21,21 @@ class CartTile extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.grey[100],
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.r),
         ),
-        margin: const EdgeInsets.only(left: 25, right: 25, bottom: 25),
-        padding: const EdgeInsets.all(25),
+        margin: EdgeInsets.only(left: 25.w, right: 25.w, bottom: 25.h),
+        padding: EdgeInsets.all(25.r),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Left: Product Image
-            Row(
-              children: List.generate(
-                product.imageUrl.length,
-                (index) => Image.asset(
-                  product.imageUrl[index],
-                  width: 80,
-                  height: 80,
-                ),
-              ),
+            Image.asset(
+              product.imageUrl.first,
+              width: 80.w,
+              height: 80.h,
             ),
-            const SizedBox(width: 24), // space between image and info
+
+            SizedBox(width: 24.w), // space between image and info
 
             // Right: Product info column
             Expanded(
@@ -49,22 +46,23 @@ class CartTile extends StatelessWidget {
                   Text(
                     product.name,
                     style: GoogleFonts.inter(
-                        fontSize: 18,
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.bold,
                         color: primaryColor),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: 4.h),
 
                   // Product Type
                   Text(
                     product.type,
-                    style: GoogleFonts.inter(fontSize: 16, color: thirdColor),
+                    style:
+                        GoogleFonts.inter(fontSize: 16.sp, color: thirdColor),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: 4.h),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +71,7 @@ class CartTile extends StatelessWidget {
                       Text(
                         '\$${product.price.toStringAsFixed(0)}',
                         style: GoogleFonts.inter(
-                            fontSize: 18,
+                            fontSize: 18.sp,
                             fontWeight: FontWeight.bold,
                             color: primaryColor),
                       ),
@@ -96,7 +94,7 @@ class CartTile extends StatelessWidget {
                           Text(
                             product.quantity.toString(),
                             style: GoogleFonts.inter(
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -114,14 +112,14 @@ class CartTile extends StatelessWidget {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 4),
+                        padding: EdgeInsets.only(left: 2.w, right: 2.w),
                         child: IconButton(
                           onPressed: () {
                             productController.removeFromCart(product);
                           },
                           icon: Image.asset(
                             "assets/images/trash.png",
-                            height: 20,
+                            height: 20.h,
                             color: Colors.black,
                           ),
                         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:furniture_shop/components/description_button.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,12 +28,12 @@ class ProductDescriptionPage extends StatelessWidget {
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
         backgroundColor: Colors.transparent, // Make AppBar transparent
-        leadingWidth: 80,
+        leadingWidth: 80.r,
         leading: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
           child: SizedBox(
-            width: 50, // desired width of your circular container
-            height: 50, // desired height
+            width: 50.w, // desired width of your circular container
+            height: 50.h, // desired height
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -42,8 +43,8 @@ class ProductDescriptionPage extends StatelessWidget {
                 icon: Image.asset(
                   "assets/images/back.png",
                   color: Colors.black,
-                  width: 24,
-                  height: 24,
+                  width: 24.w,
+                  height: 24.h,
                 ),
                 onPressed: () => Get.back(),
               ),
@@ -52,10 +53,10 @@ class ProductDescriptionPage extends StatelessWidget {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            padding: EdgeInsets.symmetric(horizontal: 15.0.w),
             child: SizedBox(
-              width: 50, // desired width of your circular container
-              height: 50, // desired height
+              width: 50.w, // desired width of your circular container
+              height: 50.h, // desired height
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -64,7 +65,7 @@ class ProductDescriptionPage extends StatelessWidget {
                 child: IconButton(
                   onPressed: () {},
                   icon: Image.asset("assets/images/favourite.png",
-                      color: Colors.black, width: 24, height: 24),
+                      color: Colors.black, width: 24.w, height: 24.h),
                 ),
               ),
             ),
@@ -84,25 +85,25 @@ class ProductDescriptionPage extends StatelessWidget {
                   child: Image.asset(
                     product.imageUrl.first,
                     width: double.infinity,
-                    height: 360,
+                    height: 360.h,
                     fit: BoxFit.cover,
                   ),
                 ),
               ],
             ),
 
-            const SizedBox(height: 15),
+            SizedBox(height: 15.h),
 
             Container(
-              padding: EdgeInsets.symmetric(vertical: 50),
+              padding: EdgeInsets.symmetric(vertical: 50.h),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(16.r),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withValues(alpha: 0.3), // shadow color
-                    spreadRadius: 10, // how much the shadow spreads
-                    blurRadius: 40, // blur effect
+                    spreadRadius: 10.r, // how much the shadow spreads
+                    blurRadius: 40.r, // blur effect
                     offset: Offset(0, 5), // horizontal & vertical offset
                   ),
                 ],
@@ -111,7 +112,7 @@ class ProductDescriptionPage extends StatelessWidget {
                 children: [
                   // Product name, type, rating
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    padding: EdgeInsets.symmetric(horizontal: 25.0.w),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -120,11 +121,11 @@ class ProductDescriptionPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: 240,
+                              width: 240.w,
                               child: Text(
                                 product.name,
                                 style: GoogleFonts.inter(
-                                  fontSize: 20,
+                                  fontSize: 20.sp,
                                   fontWeight: FontWeight.bold,
                                   color: primaryColor,
                                 ),
@@ -135,32 +136,31 @@ class ProductDescriptionPage extends StatelessWidget {
                                     .ellipsis, // shows "..." if text is longer than 2 lines
                               ),
                             ),
-                            const SizedBox(height: 4),
+                            SizedBox(height: 4.h),
                             Text(
                               product.type,
                               style: GoogleFonts.inter(
                                 color: thirdColor,
-                                fontSize: 14,
+                                fontSize: 14.sp,
                               ),
                             ),
                           ],
                         ),
                         // Right side — rating
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 4),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 8.w, vertical: 4.h),
                           decoration: BoxDecoration(
                             color: Colors.amber.shade100,
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.r),
                           ),
                           child: Row(
                             children: [
-                              const Icon(Icons.star,
-                                  color: Colors.amber, size: 16),
-                              const SizedBox(width: 4),
+                              Icon(Icons.star, color: Colors.amber, size: 16.r),
+                              SizedBox(width: 4.w),
                               Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 4.0, vertical: 2),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 4.0.w, vertical: 2.h),
                                 child: Text(
                                   product.rating.toString(),
                                   style: GoogleFonts.inter(
@@ -175,11 +175,11 @@ class ProductDescriptionPage extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15.h),
 
                   // Product description with Read More
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    padding: EdgeInsets.symmetric(horizontal: 25.0.h),
                     child: Obx(() {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -188,7 +188,7 @@ class ProductDescriptionPage extends StatelessWidget {
                             product.description,
                             style: GoogleFonts.inter(
                               color: thirdColor,
-                              fontSize: 16,
+                              fontSize: 16.sp,
                             ),
                             maxLines: isExpanded.value
                                 ? null
@@ -198,16 +198,17 @@ class ProductDescriptionPage extends StatelessWidget {
                                 : TextOverflow
                                     .ellipsis, // add ... dot after making 2 lines
                           ),
-                          const SizedBox(height: 5),
+                          SizedBox(height: 5.h),
                           GestureDetector(
                             onTap: () => isExpanded.value = !isExpanded
                                 .value, // initially isExpanded is false but after tapping it makes it to True,
                             child: Text(
                               isExpanded.value ? "Read Less" : "Read More",
                               style: GoogleFonts.inter(
-                                  color: primaryColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
+                                color: primaryColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.sp,
+                              ),
                             ),
                           ),
                         ],
@@ -215,23 +216,24 @@ class ProductDescriptionPage extends StatelessWidget {
                     }),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    padding: EdgeInsets.symmetric(horizontal: 25.0.w),
                     child: Row(
                       children: [
                         ...List.generate(
                             product.imageUrl.length,
                             (index) => Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 24, left: 4, bottom: 24),
+                                  padding: EdgeInsets.only(
+                                      top: 24.h, left: 4.w, bottom: 24.h),
                                   child: InkWell(
                                     child: Container(
-                                      height: 53,
-                                      width: 50,
+                                      height: 53.h,
+                                      width: 50.r,
                                       decoration: BoxDecoration(
                                         border: Border.all(
                                           color: secondaryColor,
                                         ),
-                                        borderRadius: BorderRadius.circular(12),
+                                        borderRadius:
+                                            BorderRadius.circular(12.r),
                                       ),
                                       child: Image.asset(
                                         product.imageUrl[index],
@@ -245,7 +247,7 @@ class ProductDescriptionPage extends StatelessWidget {
 
                   // Color selector + Quantity
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    padding: EdgeInsets.symmetric(horizontal: 25.0.w),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -256,9 +258,11 @@ class ProductDescriptionPage extends StatelessWidget {
                             Text(
                               "Color",
                               style: GoogleFonts.inter(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16.sp,
+                              ),
                             ),
-                            const SizedBox(height: 8),
+                            SizedBox(height: 8.h),
                             Obx(() => Row(
                                   children: List.generate(
                                     controller.colorOptions.length,
@@ -266,10 +270,10 @@ class ProductDescriptionPage extends StatelessWidget {
                                       onTap: () =>
                                           controller.changeColor(index),
                                       child: Container(
-                                        margin: const EdgeInsets.symmetric(
-                                            horizontal: 4.0),
-                                        height: 24,
-                                        width: 24,
+                                        margin: EdgeInsets.symmetric(
+                                            horizontal: 4.0.w),
+                                        height: 24.h,
+                                        width: 24.w,
                                         decoration: BoxDecoration(
                                           color: controller.colorOptions[index],
                                           shape: BoxShape.circle,
@@ -299,7 +303,7 @@ class ProductDescriptionPage extends StatelessWidget {
                             Obx(() => Text(
                                   controller.quantity.value.toString(),
                                   style: GoogleFonts.inter(
-                                    fontSize: 16,
+                                    fontSize: 16.sp,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 )),
@@ -313,11 +317,11 @@ class ProductDescriptionPage extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(height: 30),
+                  SizedBox(height: 30.h),
 
                   // Add to cart button
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    padding: EdgeInsets.symmetric(horizontal: 25.0.w),
                     child: DescriptionButton(
                       text: 'Add to Cart ',
                       price: ' | ' '\$${product.price.toInt()}',
@@ -329,7 +333,7 @@ class ProductDescriptionPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 25),
+            SizedBox(height: 25.h),
           ],
         ),
       ),

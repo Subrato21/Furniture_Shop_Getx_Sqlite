@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:furniture_shop/pages/intro_page.dart';
 import 'package:furniture_shop/components/bottom_nav_bar.dart';
 import 'package:furniture_shop/controller/product_controller.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   //  Initialize controllers before the app starts
@@ -16,12 +17,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: IntroPage(),
-      routes: {
-        '/intropage': (context) => const IntroPage(),
-        '/homepage': (context) => const BottomNavBar(), //  Main app after intro
+    return ScreenUtilInit(
+      designSize: const Size(411, 891), // Pixel 6 logical resolution
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: IntroPage(),
+          routes: {
+            '/intropage': (context) => const IntroPage(),
+            '/homepage': (context) =>
+                const BottomNavBar(), //  Main app after intro
+          },
+        );
       },
     );
   }

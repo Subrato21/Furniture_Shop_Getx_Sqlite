@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:furniture_shop/theme/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,23 +20,29 @@ class CartCheckoutButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: primaryColor,
-          borderRadius: BorderRadius.circular(40),
+          borderRadius: BorderRadius.circular(40.r),
         ),
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(20.r),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             //text of the button
-            Text(text,
-                style: GoogleFonts.inter(
-                    color: thirdColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold)),
-            Text(totalprice,
-                style: GoogleFonts.inter(
-                    color: thirdColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold)),
+            Text(
+              text,
+              style: GoogleFonts.inter(
+                color: thirdColor,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              totalprice,
+              style: GoogleFonts.inter(
+                color: thirdColor,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
       ),

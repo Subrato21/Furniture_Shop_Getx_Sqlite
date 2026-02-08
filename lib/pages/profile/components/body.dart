@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -14,16 +15,16 @@ class Body extends StatelessWidget {
     return Column(
       children: [
         ProfilePicture(),
-        const SizedBox(height: 12),
+        SizedBox(height: 12.h),
         Text(
           "Smith Williams",
           style: GoogleFonts.inter(
             color: primaryColor,
-            fontSize: 20,
+            fontSize: 20.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: 20.h),
         Expanded(
           child: Container(
             width: double.infinity,
@@ -32,12 +33,12 @@ class Body extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 40, top: 25),
+                  padding: EdgeInsets.only(left: 40.w, top: 25.h),
                   child: Text(
                     "Accounts",
                     style: GoogleFonts.inter(
                       color: Color(0xFF828282),
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

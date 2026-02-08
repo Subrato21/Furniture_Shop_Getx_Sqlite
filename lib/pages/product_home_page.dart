@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:furniture_shop/pages/profile/profile_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'package:furniture_shop/components/best_seller_tile.dart';
@@ -31,8 +31,8 @@ class ProductHomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(
-                    top: 20, left: 25, right: 25, bottom: 25),
+                padding: EdgeInsets.only(
+                    top: 20.h, left: 25.w, right: 25.w, bottom: 25.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -40,28 +40,27 @@ class ProductHomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                          width: 250, // control width so text wraps
+                          width: 250.w, // control width so text wraps
                           child: Text(
                             "Discover the Best Furniture",
                             //maxLines: 2, // allow 2 lines max
                             // overflow: TextOverflow
                             //     .ellipsis, // optional: adds "..." if too long
                             style: GoogleFonts.inter(
-                              fontSize: 20,
+                              fontSize: 20.sp,
                               color: primaryColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                         CircleAvatar(
-                          radius: 24, // size of circle
+                          radius: 24.r, // size of circle
                           backgroundImage: AssetImage("assets/images/boy.png"),
                         ),
                       ],
                     ),
 
-                    const SizedBox(
-                        height: 12), // spacing between row & search bar
+                    SizedBox(height: 12.h), // spacing between row & search bar
 
                     // search bar
                     TextField(
@@ -69,7 +68,7 @@ class ProductHomePage extends StatelessWidget {
                         filled: true, // enable background color
                         fillColor: Colors.grey[200],
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(20.r),
                         ),
                         hintText: 'Search for furniture,',
                         hintStyle: TextStyle(color: secondaryColor),
@@ -80,20 +79,20 @@ class ProductHomePage extends StatelessWidget {
                         ), // filter icon at the end (leading side is prefixIcon)
                       ),
                     ),
-                    const SizedBox(height: 12),
+                    SizedBox(height: 12.h),
                     Text(
                       "Categories",
                       style: GoogleFonts.inter(
-                        fontSize: 18,
+                        fontSize: 18.sp,
                         color: primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
 
                     // category list
-                    const SizedBox(height: 12),
+                    SizedBox(height: 12.h),
                     SizedBox(
-                      height: 50,
+                      height: 50.h,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: controller.categories.length,
@@ -143,7 +142,7 @@ class ProductHomePage extends StatelessWidget {
 
               // product grid
               SizedBox(
-                height: 330,
+                height: 330.h,
                 child: Obx(
                   () => ListView.builder(
                     scrollDirection: Axis.horizontal,
@@ -159,25 +158,25 @@ class ProductHomePage extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 12),
+              SizedBox(height: 12.h),
               Padding(
-                padding: const EdgeInsets.only(left: 30.0),
+                padding: EdgeInsets.only(left: 30.0.w),
                 child: Text(
                   "Best Seller",
                   style: GoogleFonts.inter(
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     color: primaryColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              const SizedBox(height: 12),
+              SizedBox(height: 12.sp),
 
               // product grid
               Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
+                padding: EdgeInsets.only(bottom: 20.0.h),
                 child: SizedBox(
-                  height: 130,
+                  height: 130.h,
                   child: Obx(() {
                     // get best-seller cupboards
                     final cupboards = controller.bestSellerCupboards;

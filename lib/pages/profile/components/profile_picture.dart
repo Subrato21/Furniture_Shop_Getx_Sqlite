@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfilePicture extends StatelessWidget {
   const ProfilePicture({
@@ -8,8 +9,8 @@ class ProfilePicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 115,
-      width: 115,
+      height: 110.h,
+      width: 110.w,
       child: Stack(
         fit: StackFit.expand,
         clipBehavior: Clip.none,
@@ -24,14 +25,14 @@ class ProfilePicture extends StatelessWidget {
             bottom: 0,
             right: -12,
             child: SizedBox(
-              height: 46,
-              width: 46,
+              height: 46.h,
+              width: 46.w,
               child: TextButton(
                 style: TextButton.styleFrom(
-                  padding: EdgeInsets.all(8),
+                  padding: EdgeInsets.all(8.r),
                   backgroundColor: const Color(0xFFF5F6F9),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(50.r),
                     side: const BorderSide(color: Colors.white),
                   ),
                 ),
