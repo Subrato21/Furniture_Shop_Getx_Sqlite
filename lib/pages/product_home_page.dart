@@ -54,8 +54,8 @@ class ProductHomePage extends StatelessWidget {
                           ),
                         ),
                         CircleAvatar(
-                          radius: 24.r, // size of circle
-                          backgroundImage: AssetImage("assets/images/boy.png"),
+                          radius: 26.r, // size of circle
+                          backgroundImage: AssetImage("assets/icons/boy.png"),
                         ),
                       ],
                     ),

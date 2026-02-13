@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:furniture_shop/theme/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyButton extends StatelessWidget {
   final String text;
@@ -22,7 +23,11 @@ class MyButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //text of the button
-              Text(text, style: TextStyle(color: Colors.white)),
+              Text(text,
+                  style: GoogleFonts.inter(
+                    color: Colors.white,
+                    fontSize: 18.sp,
+                  )),
             ],
           ),
         ),

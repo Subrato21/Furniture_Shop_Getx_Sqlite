@@ -30,7 +30,7 @@ class CartCheckoutButton extends StatelessWidget {
             Text(
               text,
               style: GoogleFonts.inter(
-                color: thirdColor,
+                color: Colors.white,
                 fontSize: 16.sp,
                 fontWeight: FontWeight.bold,
               ),
@@ -38,7 +38,7 @@ class CartCheckoutButton extends StatelessWidget {
             Text(
               totalprice,
               style: GoogleFonts.inter(
-                color: thirdColor,
+                color: Colors.white,
                 fontSize: 16.sp,
                 fontWeight: FontWeight.bold,
               ),
